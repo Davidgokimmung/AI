@@ -16,8 +16,6 @@ for _,_,files in os.walk(folder):
         for w in r.iter('w'):
           out+=(w.text.strip().lower() + "_" + w.attrib['pos']+"\n")
 %cd /content
-out1 = open("Week1_output.txt", "w")
-out1.write(out)
 
 str_list=out.split()
 freq = {}
