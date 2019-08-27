@@ -31,12 +31,9 @@ k = Counter(freq)
 high = k.most_common(10)  
 
 out2 = ""
-
+out2+=("Top 10 frequently used Words"+"\n")
 for i in high:
   out2+=(str(i[0]) + " : " + str(i[1])+"\n")
-
-out3 = open("Week2_output1.txt",'w');
-out3.write(out2)
 
 #Top 10 frequently used Tags
 str_list1=out1.split()
@@ -50,10 +47,10 @@ for item in str_list1:
 k1 = Counter(freq1) 
 high1 = k1.most_common(10)  
 
-out4 = ""
+out2+=("\n"+"Top 10 frequently used Tags"+"\n")
 
 for i in high1:
-  out4+=(str(i[0]) + " : " + str(i[1])+"\n")
+  out2+=(str(i[0]) + " : " + str(i[1])+"\n")
 
-out5 = open("Week2_output2.txt",'w');
-out5.write(out4)
+out3 = open("Week3_output.txt",'w');
+out3.write(out2)
