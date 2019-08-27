@@ -1,0 +1,23 @@
+Top 10 frequently used Words
+the : 51518
+of : 26098
+and : 23833
+to : 23664
+a : 20270
+in : 15876
+is : 10945
+it : 9239
+i : 8441
+that : 8438
+
+Top 10 frequently used Tags
+SUBST : 211526
+VERB : 159864
+PREP : 110905
+ADJ : 98153
+ART : 76658
+PRON : 75307
+ADV : 59998
+CONJ : 51824
+UNC : 6664
+INTERJ : 1249
