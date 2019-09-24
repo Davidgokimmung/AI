@@ -3,28 +3,32 @@ import os
 import xml.etree.ElementTree as elt
 
 %cd /content/drive/My\ Drive/
-folder = "Train-corups/"
-
+!pwd
+outerfolder = "Train-corups/"
 out = ""
 Dict = {}
-for _,_,files in os.walk(folder):
-    for file in files:
-        tree = elt.parse(folder+file)
-        r = tree.getroot()
+    
+shpfiles = []
+for dirpath, subdirs, files in os.walk(outerfolder):
+    for x in files:
+        if x.endswith(".xml"):
+            shpfiles.append(os.path.join(dirpath, x))
+for file in shpfiles:
+  tree = elt.parse(file)
+  r = tree.getroot()
 
-        for w in r.iter('w'):
-          word = w.text.strip().lower()
-          tag = w.attrib['pos']
-          if tag in Dict:
-            if word in Dict[tag]:
-              Dict[tag][word]+=1
-            else:
-              Dict[tag][word]=1
-          else:
-            innerDict = {}
-            Dict[tag] = innerDict
-            innerDict[word]=1
-          
+  for w in r.iter('w'):
+    word = w.text.strip().lower()
+    tag = w.attrib['pos']
+    if tag in Dict:
+      if word in Dict[tag]:
+        Dict[tag][word]+=1
+      else:
+        Dict[tag][word]=1
+    else:
+      innerDict = {}
+      Dict[tag] = innerDict
+      innerDict[word]=1
 %cd /content
 
 for i in Dict:
