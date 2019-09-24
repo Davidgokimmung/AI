@@ -4,17 +4,21 @@ import xml.etree.ElementTree as elt
 
 %cd /content/drive/My\ Drive/
 !pwd
-folder = "Train-corups/"
-file = os.walk(folder)
-
+outerfolder = "Train-corups/"
 out = ""
-for _,_,files in os.walk(folder):
-    for file in files:
-        t = elt.parse(folder+file)
-        r = tree.getroot()
+    
+shpfiles = []
+for dirpath, subdirs, files in os.walk(outerfolder):
+    for x in files:
+        if x.endswith(".xml"):
+            shpfiles.append(os.path.join(dirpath, x))
+for file in shpfiles:
+  tree = elt.parse(file)
+  r = tree.getroot()
 
-        for w in r.iter('w'):
-          out+=(w.text.strip().lower() + "_" + w.attrib['pos']+"\n")
+  for w in r.iter('w'):
+    out+=(w.text.strip().lower() + "_" + w.attrib['c5']+"\n")
+  
 %cd /content
 
 str_list=out.split()
