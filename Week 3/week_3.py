@@ -2,6 +2,7 @@ import sys
 import os
 import xml.etree.ElementTree as elt
 from collections import Counter 
+from matplotlib import pyplot as plt 
 
 %cd /content/drive/My\ Drive/
 folder = "Train-corups/"
@@ -54,3 +55,24 @@ for i in high1:
 
 out3 = open("Week3_output.txt",'w');
 out3.write(out2)
+
+#Analysis
+x = []
+y = []
+
+for i in range(0,10):
+	x.append(high[i][0])
+	y.append(high[i][1])
+
+plt.bar(x,y)
+plt.show()
+
+x = []
+y = []
+
+for i in range(0,10):
+	x.append(high1[i][0])
+	y.append(high1[i][1])
+
+plt.bar(x,y)
+plt.show()
