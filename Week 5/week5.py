@@ -36,6 +36,8 @@ for _,_,files in os.walk(folder1):
           if word in Dict:
             tag = max(Dict[word], key=Dict[word].get)
             out+=(word + " : " + tag + "\n")
+          else:
+            out+=(word + " : Undefined\n")
 %cd /content
 
 out1 = open("Week5_output.txt",'w');
