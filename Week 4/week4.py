@@ -19,7 +19,7 @@ for file in shpfiles:
 
   for w in r.iter('w'):
     word = w.text.strip().lower()
-    tag = w.attrib['pos']
+    tag = w.attrib['c5']
     if tag in Dict:
       if word in Dict[tag]:
         Dict[tag][word]+=1
