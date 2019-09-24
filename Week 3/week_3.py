@@ -5,18 +5,23 @@ from collections import Counter
 from matplotlib import pyplot as plt 
 
 %cd /content/drive/My\ Drive/
-folder = "Train-corups/"
-
+!pwd
+outerfolder = "Train-corups/"
 out = ""
 out1 = ""
-for _,_,files in os.walk(folder):
-    for file in files:
-        tree = elt.parse(folder+file)
-        r = tree.getroot()
+    
+shpfiles = []
+for dirpath, subdirs, files in os.walk(outerfolder):
+    for x in files:
+        if x.endswith(".xml"):
+            shpfiles.append(os.path.join(dirpath, x))
+for file in shpfiles:
+  tree = elt.parse(file)
+  r = tree.getroot()
 
-        for w in r.iter('w'):
-          out+=(w.text.strip().lower() +"\n")
-          out1+=(w.attrib['pos']+"\n")
+  for w in r.iter('w'):
+    out+=(w.text.strip().lower() +"\n")
+    out1+=(w.attrib['c5']+"\n") 
 %cd /content
 
 #Top 10 frequently used Words
@@ -34,6 +39,7 @@ high = k.most_common(10)
 out2 = ""
 out2+=("Top 10 frequently used Words"+"\n")
 for i in high:
+  print(str(i[0]) + " : " + str(i[1]))
   out2+=(str(i[0]) + " : " + str(i[1])+"\n")
 
 #Top 10 frequently used Tags
@@ -51,6 +57,7 @@ high1 = k1.most_common(10)
 out2+=("\n"+"Top 10 frequently used Tags"+"\n")
 
 for i in high1:
+  print(str(i[0]) + " : " + str(i[1]))
   out2+=(str(i[0]) + " : " + str(i[1])+"\n")
 
 out3 = open("Week3_output.txt",'w');
