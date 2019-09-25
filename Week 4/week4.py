@@ -20,22 +20,22 @@ for file in shpfiles:
   for w in r.iter('w'):
     word = w.text.strip().lower()
     tag = w.attrib['c5']
-    if tag in Dict:
-      if word in Dict[tag]:
-        Dict[tag][word]+=1
+    if word in Dict:
+      if tag in Dict[word]:
+        Dict[word][tag]+=1
       else:
-        Dict[tag][word]=1
+        Dict[word][tag]=1
     else:
       innerDict = {}
-      Dict[tag] = innerDict
-      innerDict[word]=1
+      Dict[word] = innerDict
+      innerDict[tag]=1
 %cd /content
 
 for i in Dict:
   count = 0
   for k in Dict[i]:
     count+=Dict[i][k]
-  out+=("Probabilities for the tag "+ i +" :\n")
+  out+=("Probabilities for the word "+ i +" :\n")
   for j in Dict[i]:
     prob = Dict[i][j]/count
     out+=(j + " : " + "{:.6f}".format(prob) + "\n" )
